@@ -1,10 +1,14 @@
 
+
 Install open source licensing in all .c and .h files in directory tree.
 Original files are renamed with .bak extension.  Existing .bak files (if any)
 are silently over-written. Due caution is recommended.
 
-USAGE: InstallLicense directory license year name email [-d]
+USAGE: InstallLicense directory license year name email [options]
  license - PD, MIT or AGPL
  year    - copyright year[s]. use single quotes if necessary
  name    - copyright holder[s]. use single quotes if necessary
+Options
+ -p xxx  - program name and description, used by some licenses
+ -d      - debug
 

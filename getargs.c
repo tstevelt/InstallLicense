@@ -12,10 +12,13 @@ static void Usage ()
 	printf ( "\nInstall open source licensing in all .c and .h files in directory tree.\n" );
 	printf ( "Original files are renamed with .bak extension.  Existing .bak files (if any)\n" );
 	printf ( "are silently over-written. Due caution is recommended.\n\n" );
-	printf ( "USAGE: InstallLicense directory license year name email [-d]\n" );
+	printf ( "USAGE: InstallLicense directory license year name email [options]\n" );
 	printf ( " license - PD, MIT or AGPL\n" );
 	printf ( " year    - copyright year[s]. use single quotes if necessary\n" );
 	printf ( " name    - copyright holder[s]. use single quotes if necessary\n" );
+	printf ( "Options\n" );
+	printf ( " -p xxx  - program name and description, used by some licenses\n" );
+	printf ( " -d      - debug\n" );
 	printf ( "\n" );
 	exit ( 1 );
 }
@@ -33,10 +36,16 @@ void getargs ( int argc, char *argv[] )
 	CopyrightYear   = argv[3];
 	CopyrightHolder = argv[4];
 	CopyrightEmail  = argv[5];
+	ProgramNameAndDescription = NULL;
 
 	for ( int xa = 6; xa < argc; xa++ )
 	{
-		if ( strcmp ( argv[xa], "-d" ) == 0 )
+		if ( xa + 1 < argc && strcmp ( argv[xa], "-p" ) == 0 )
+		{
+			xa++;
+			ProgramNameAndDescription = argv[xa];
+		}
+		else if ( strcmp ( argv[xa], "-d" ) == 0 )
 		{
 			Debug = 1;
 		}

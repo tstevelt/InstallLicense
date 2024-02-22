@@ -17,6 +17,12 @@ void IncludeLicense ( FILE *ofp )
 
 	while ( fgets ( xbuffer, sizeof(xbuffer), ifp ) != NULL )
 	{
+		if ( strstr ( xbuffer, "PROGRAM_NAME_AND_DESCRIPTION" ) != NULL )
+		{
+			cp = shsSearchAndReplace ( xbuffer, "PROGRAM_NAME_AND_DESCRIPTION", ProgramNameAndDescription );
+			sprintf ( xbuffer, "%s", cp );
+		}
+
 		if ( strstr ( xbuffer, "COPYRIGHT_YEAR" ) != NULL )
 		{
 			cp = shsSearchAndReplace ( xbuffer, "COPYRIGHT_YEAR", CopyrightYear );

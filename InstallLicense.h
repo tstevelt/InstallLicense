@@ -28,6 +28,7 @@ TYPE	char	*License;
 TYPE	char	*CopyrightYear;
 TYPE	char	*CopyrightHolder;
 TYPE	char	*CopyrightEmail;
+TYPE	char	*ProgramNameAndDescription;
 TYPE	int		FileCount;
 
 TYPE	int		LicenseType;

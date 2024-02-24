@@ -7,6 +7,7 @@
 
 #include	"InstallLicense.h"
 
+
 void ProcessFile ( char *FileName )
 {
 	int		xl, xi, xf;
@@ -16,15 +17,37 @@ void ProcessFile ( char *FileName )
 
 	xl = strlen ( FileName );
 
-	if ( strncmp ( &FileName[xl-2], ".c", 2 ) == 0 || strncmp ( &FileName[xl-2], ".h", 2 ) == 0 )
+	if ( strncmp ( &FileName[xl-2], ".c", 2 ) == 0 )
 	{
-		printf ( "Processing: %s\n", FileName );
-		FileCount++;
+		FileType = FILE_TYPE_C;
+	}
+	else if ( strncmp ( &FileName[xl-2], ".h", 2 ) == 0 )
+	{
+		FileType = FILE_TYPE_C;
+	}
+	else if ( strncmp ( &FileName[xl-3], ".sh", 3 ) == 0 )
+	{
+		FileType = FILE_TYPE_SH;
+	}
+	else if ( strncmp ( &FileName[xl-3], ".js", 3 ) == 0 )
+	{
+		FileType = FILE_TYPE_JS;
+	}
+	else if ( strncmp ( &FileName[xl-4], ".css", 4 ) == 0 )
+	{
+		FileType = FILE_TYPE_CSS;
+	}
+	else if ( strncmp ( &FileName[xl-4], ".sql", 4 ) == 0 )
+	{
+		FileType = FILE_TYPE_SQL;
 	}
 	else
 	{
 		return;
 	}
+
+	printf ( "Processing: %s\n", FileName );
+	FileCount++;
 
 	sprintf ( bfn, "%s.bak", FileName );
 	rename ( FileName, bfn );
@@ -49,27 +72,45 @@ void ProcessFile ( char *FileName )
 	}
 
 	rewind ( sfp );
-	if ( strncmp ( xbuffer, "/*", 2 ) == 0 )
-	{
-		if ( Debug )
-		{
-			printf ( "  skipping inital comment\n" );
-		}
 
-		xf = 0;
-		while ( xf == 0 && fgets ( xbuffer, sizeof(xbuffer), sfp ) != NULL )
-		{
-			xl = strlen ( xbuffer );
-			fprintf ( dfp, "%s", xbuffer );
-			for ( xi = 0; xi < xl; xi++ )
+	switch ( FileType )
+	{
+		case FILE_TYPE_C:
+		case FILE_TYPE_JS:
+			if ( strncmp ( xbuffer, "/*", 2 ) == 0 )
 			{
-				if ( strncmp ( &xbuffer[xi], "*/", 2 ) == 0 )
+				if ( Debug )
 				{
-					xf = 1;
-					break;
+					printf ( "  skipping inital comment\n" );
+				}
+
+				xf = 0;
+				while ( xf == 0 && fgets ( xbuffer, sizeof(xbuffer), sfp ) != NULL )
+				{
+					xl = strlen ( xbuffer );
+					fprintf ( dfp, "%s", xbuffer );
+					for ( xi = 0; xi < xl; xi++ )
+					{
+						if ( strncmp ( &xbuffer[xi], "*/", 2 ) == 0 )
+						{
+							xf = 1;
+							break;
+						}
+					}
 				}
 			}
-		}
+			break;
+
+		case FILE_TYPE_SH:
+			if ( strncmp ( xbuffer, "#!", 2 ) == 0 )
+			{
+				fgets ( xbuffer, sizeof(xbuffer), sfp );
+				fprintf ( dfp, "%s", xbuffer );
+			}
+			break;
+
+		case FILE_TYPE_SQL:
+			break;
 	}
 
 	IncludeLicense ( dfp );

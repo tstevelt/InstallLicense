@@ -38,6 +38,14 @@ TYPE	int		LicenseType;
 
 TYPE	char	ifn[1024], sfn[1024], dfn[1024], nfn[1024];
 
+#define		FILE_TYPE_C		1
+#define		FILE_TYPE_JS	2
+#define		FILE_TYPE_CSS	3
+#define		FILE_TYPE_SH	4
+#define		FILE_TYPE_SQL	5
+
+TYPE	int	FileType;
+
 /*----------------------------
 :.,$d
 :r ! mkproto -p *.c

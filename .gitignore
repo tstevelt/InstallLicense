@@ -1,2 +1,5 @@
+*.a
 *.bak
 *.old
+*-
+script

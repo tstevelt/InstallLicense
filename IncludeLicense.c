@@ -41,7 +41,42 @@ void IncludeLicense ( FILE *ofp )
 			sprintf ( xbuffer, "%s", cp );
 		}
 
+		switch ( FileType )
+		{
+			case FILE_TYPE_C:
+			case FILE_TYPE_JS:
+				fprintf ( ofp, "// " );
+				break;
+			case FILE_TYPE_CSS:
+				TrimRight ( xbuffer );
+				if ( strlen ( xbuffer ) == 0 )
+				{
+					continue;
+				}
+				fprintf ( ofp, "/* " );
+				break;
+			case FILE_TYPE_SH:
+				fprintf ( ofp, "# " );
+				break;
+			case FILE_TYPE_SQL:
+				fprintf ( ofp, "-- " );
+				break;
+		}
+
 		fprintf ( ofp, "%s", xbuffer );
+
+		switch ( FileType )
+		{
+			case FILE_TYPE_CSS:
+				fprintf ( ofp, " */\n" );
+				break;
+			case FILE_TYPE_C:
+			case FILE_TYPE_JS:
+			case FILE_TYPE_SH:
+			case FILE_TYPE_SQL:
+				break;
+		}
+
 	}
 
 	fclose ( ifp );

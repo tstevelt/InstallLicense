@@ -6,8 +6,11 @@
 	Synopsis: Install license in source code tree.  Rewrite .c and .h files
 	Return  : 
 
+	Todo    : test everything for symbolic link.
+
 	Who		Date		Modification
 	---------------------------------------------------------------------
+	tms		02/24/2024	Added .sh, .js, .css and .sql files
 
 ----------------------------------------------------------------------------*/
 /*---------------------------------------------------------------------------

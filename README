@@ -1,6 +1,7 @@
 
-
 Install open source licensing in all .c and .h files in directory tree.
+
+Also installs in .sh, .py, .js, .css and .sql files in directory tree.
 Original files are renamed with .bak extension.  Existing .bak files (if any)
 are silently over-written. Due caution is recommended.
 

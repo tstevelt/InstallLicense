@@ -42,7 +42,8 @@ TYPE	char	ifn[1024], sfn[1024], dfn[1024], nfn[1024];
 #define		FILE_TYPE_JS	2
 #define		FILE_TYPE_CSS	3
 #define		FILE_TYPE_SH	4
-#define		FILE_TYPE_SQL	5
+#define		FILE_TYPE_PY	5
+#define		FILE_TYPE_SQL	6
 
 TYPE	int	FileType;
 

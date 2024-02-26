@@ -29,6 +29,10 @@ void ProcessFile ( char *FileName )
 	{
 		FileType = FILE_TYPE_SH;
 	}
+	else if ( strncmp ( &FileName[xl-3], ".py", 3 ) == 0 )
+	{
+		FileType = FILE_TYPE_PY;
+	}
 	else if ( strncmp ( &FileName[xl-3], ".js", 3 ) == 0 )
 	{
 		FileType = FILE_TYPE_JS;
@@ -102,6 +106,7 @@ void ProcessFile ( char *FileName )
 			break;
 
 		case FILE_TYPE_SH:
+		case FILE_TYPE_PY:
 			if ( strncmp ( xbuffer, "#!", 2 ) == 0 )
 			{
 				fgets ( xbuffer, sizeof(xbuffer), sfp );

@@ -10,7 +10,7 @@
 static void Usage ()
 {
 	printf ( "\nInstall open source licensing in all .c and .h files in directory tree.\n" );
-	printf ( "\nAlso installs in .sh, .js, .css and .sql files in directory tree.\n" );
+	printf ( "\nAlso installs in .sh, .py, .js, .css and .sql files in directory tree.\n" );
 	printf ( "Original files are renamed with .bak extension.  Existing .bak files (if any)\n" );
 	printf ( "are silently over-written. Due caution is recommended.\n\n" );
 	printf ( "USAGE: InstallLicense directory license year name email [options]\n" );

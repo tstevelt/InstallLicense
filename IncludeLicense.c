@@ -56,6 +56,7 @@ void IncludeLicense ( FILE *ofp )
 				fprintf ( ofp, "/* " );
 				break;
 			case FILE_TYPE_SH:
+			case FILE_TYPE_PY:
 				fprintf ( ofp, "# " );
 				break;
 			case FILE_TYPE_SQL:
@@ -73,6 +74,7 @@ void IncludeLicense ( FILE *ofp )
 			case FILE_TYPE_C:
 			case FILE_TYPE_JS:
 			case FILE_TYPE_SH:
+			case FILE_TYPE_PY:
 			case FILE_TYPE_SQL:
 				break;
 		}

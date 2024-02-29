@@ -9,14 +9,14 @@
 
 static void CheckFile ( char *Base )
 {
-	sprintf ( sfn, "%s_LICENSE", Base );
+	sprintf ( sfn, "%s/%s_LICENSE", LICENSE_DIRECTORY, Base );
 	if ( access ( sfn, R_OK ) != 0 )
 	{
 		fprintf ( stderr, "Cannot find main license %s\n", sfn );
 		exit ( 1 );
 	}
 
-	sprintf ( ifn, "%s_INCLUDE", Base );
+	sprintf ( ifn, "%s/%s_INCLUDE", LICENSE_DIRECTORY, Base );
 	if ( access ( ifn, R_OK ) != 0 )
 	{
 		fprintf ( stderr, "Cannot find include license %s\n", ifn );

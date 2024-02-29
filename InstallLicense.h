@@ -16,6 +16,8 @@
 
 #include	"shslib.h"
 
+#define		LICENSE_DIRECTORY		"/var/local/InstallLicense"
+
 #ifdef MAIN
 #define		TYPE	/* */
 #else

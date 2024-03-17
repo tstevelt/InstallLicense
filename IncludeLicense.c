@@ -15,6 +15,13 @@ void IncludeLicense ( FILE *ofp )
 
 	ifp = fopen ( ifn, "r" );
 
+	switch ( FileType )
+	{
+		case FILE_TYPE_C:
+			fprintf ( ofp, "/*---------------------------------------------------------------------------\n" );
+			break;
+	}
+
 	while ( fgets ( xbuffer, sizeof(xbuffer), ifp ) != NULL )
 	{
 		if ( strstr ( xbuffer, "PROGRAM_NAME_AND_DESCRIPTION" ) != NULL )
@@ -43,7 +50,6 @@ void IncludeLicense ( FILE *ofp )
 
 		switch ( FileType )
 		{
-			case FILE_TYPE_C:
 			case FILE_TYPE_JS:
 				fprintf ( ofp, "// " );
 				break;
@@ -79,6 +85,13 @@ void IncludeLicense ( FILE *ofp )
 				break;
 		}
 
+	}
+
+	switch ( FileType )
+	{
+		case FILE_TYPE_C:
+			fprintf ( ofp, "---------------------------------------------------------------------------*/\n" );
+			break;
 	}
 
 	fclose ( ifp );

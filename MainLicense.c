@@ -47,6 +47,10 @@ void MainLicense ( char *Directory )
 		case LICENSE_AGPL:
 			CheckFile ( "AGPL" );
 			break;
+
+		case LICENSE_COPYRIGHT:
+			CheckFile ( "COPYRIGHT" );
+			break;
 	}
 
 	sprintf ( dfn, "%s/LICENSE", Directory );

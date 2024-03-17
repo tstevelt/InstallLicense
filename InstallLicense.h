@@ -34,9 +34,10 @@ TYPE	char	*ProgramNameAndDescription;
 TYPE	int		FileCount;
 
 TYPE	int		LicenseType;
-#define		LICENSE_PD		1
-#define		LICENSE_MIT		2
-#define		LICENSE_AGPL	3
+#define		LICENSE_PD			1
+#define		LICENSE_MIT			2
+#define		LICENSE_AGPL		3
+#define		LICENSE_COPYRIGHT	4
 
 TYPE	char	ifn[1024], sfn[1024], dfn[1024], nfn[1024];
 

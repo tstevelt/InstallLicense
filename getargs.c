@@ -14,7 +14,7 @@ static void Usage ()
 	printf ( "Original files are renamed with .bak extension.  Existing .bak files (if any)\n" );
 	printf ( "are silently over-written. Due caution is recommended.\n\n" );
 	printf ( "USAGE: InstallLicense directory license year name email [options]\n" );
-	printf ( " license - PD, MIT or AGPL\n" );
+	printf ( " license - PD, MIT, AGPL or COPYRIGHT\n" );
 	printf ( " year    - copyright year[s]. use single quotes if necessary\n" );
 	printf ( " name    - copyright holder[s]. use single quotes if necessary\n" );
 	printf ( "Options\n" );
@@ -92,6 +92,10 @@ void getargs ( int argc, char *argv[] )
 	else if ( strcmp ( License, "AGPL" ) == 0 )
 	{
 		LicenseType = LICENSE_AGPL;
+	}
+	else if ( strcmp ( License, "COPYRIGHT" ) == 0 )
+	{
+		LicenseType = LICENSE_COPYRIGHT;
 	}
 	else
 	{
